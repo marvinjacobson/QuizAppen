@@ -33,9 +33,14 @@ public class RegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
-        edtNewUser = (EditText)findViewById(R.id.edtNewUserName);
+
+        database = FirebaseDatabase.getInstance();
+        users = database.getReference("Users");
+
+        edtNewUser = (EditText)findViewById(R.id.edtUser);
         edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
-        edtNewPassword = (EditText)findViewById(R.id.edtNewPassword);
+        edtNewPassword = (EditText)findViewById(R.id.edtPassword);
+
         tvLoggin = (TextView)findViewById(R.id.tv_loggin);
         btn_sign_up = (Button)findViewById(R.id.btn_sign_up);
 
@@ -62,11 +67,6 @@ public class RegActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(RegActivity.this);
         alertDialog.setTitle("Sign up");
         alertDialog.setMessage("Please fill full information");
-
-
-
-
-
 
         alertDialog.setIcon(R.drawable.ic_baseline_person_24);
 
