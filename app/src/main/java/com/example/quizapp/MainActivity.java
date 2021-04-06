@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.quizapp.Model.User;
@@ -20,7 +21,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class MainActivity extends AppCompatActivity {
     MaterialEditText edtNewUser, edtNewPassword, edtNewEmail;
-    MaterialEditText edtUser, edtPassword;
+    EditText edtUser;
+    EditText edtPassword;
 
     Button btnSignUp, btnLogIn;
 
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
 
-        edtUser = (MaterialEditText)findViewById(R.id.edtUser);
-        edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
+        edtUser = (EditText)findViewById(R.id.edtUser);
+        edtPassword = (EditText)findViewById(R.id.edtPassword);
 
         btnLogIn = (Button)findViewById(R.id.btn_log_in);
         btnSignUp = (Button)findViewById(R.id.btn_sign_up);

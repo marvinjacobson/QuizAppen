@@ -4,52 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#308BD1"
     tools:context=".MainActivity">
 
-    <com.rengwuxian.materialedittext.MaterialEditText
+
+    <EditText
         android:id="@+id/edtUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/roundedet"
+        android:fontFamily="sans-serif"
         android:hint="User name"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <com.rengwuxian.materialedittext.MaterialEditText
+    <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/roundedet"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtUser" />
 
     <Button
         android:id="@+id/btn_sign_up"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
+        android:layout_width="223dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/roundedet"
         android:text="Sign up"
-        app:layout_constraintStart_toEndOf="@+id/btn_log_in"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_log_in" />
 
     <Button
         android:id="@+id/btn_log_in"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/roundedet"
         android:text="Log in"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
