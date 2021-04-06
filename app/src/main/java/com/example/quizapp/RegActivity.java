@@ -25,7 +25,7 @@ public class RegActivity extends AppCompatActivity {
     EditText edtNewUser, edtNewPassword, edtNewEmail;
 
     TextView tvLoggin;
-    Button btnSignUp, btnLogIn;
+    Button btn_sign_up;
 
     FirebaseDatabase database;
     DatabaseReference users;
@@ -37,6 +37,7 @@ public class RegActivity extends AppCompatActivity {
         edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
         edtNewPassword = (EditText)findViewById(R.id.edtNewPassword);
         tvLoggin = (TextView)findViewById(R.id.tv_loggin);
+        btn_sign_up = (Button)findViewById(R.id.btn_sign_up);
 
         tvLoggin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,13 @@ public class RegActivity extends AppCompatActivity {
                 openNewActivity();
             }
         });
+        btn_sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               createAccount();
+            }
+        });
+
 
     }
     public void openNewActivity(){
@@ -96,4 +104,25 @@ public class RegActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
-}
+    public void createAccount(){
+            User user = new User(edtNewUser.getText().toString(), edtNewPassword.getText().toString(), edtNewEmail.getText().toString());
+
+            users.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.child(user.getUserName()).exists())
+                        Toast.makeText(RegActivity.this, "User exists", Toast.LENGTH_SHORT).show();
+                    else {
+                        users.child(user.getUserName())
+                                .setValue(user);
+                        Toast.makeText(RegActivity.this, "User registration success", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+}}
