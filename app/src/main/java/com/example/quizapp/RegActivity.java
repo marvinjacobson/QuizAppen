@@ -47,7 +47,7 @@ public class RegActivity extends AppCompatActivity {
         tvLoggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewActivity();
+                openMain();
             }
         });
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +59,12 @@ public class RegActivity extends AppCompatActivity {
 
 
     }
-    public void openNewActivity(){
+    //Gå till main view
+    public void openMain(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
+    //Skickar username, lösenord och mail till firebase.
     public void createAccount(){
             User user = new User(edtNewUser.getText().toString(), edtNewPassword.getText().toString(), edtNewEmail.getText().toString());
 
@@ -76,7 +77,7 @@ public class RegActivity extends AppCompatActivity {
                         users.child(user.getUserName())
                                 .setValue(user);
                         Toast.makeText(RegActivity.this, "User registration success", Toast.LENGTH_SHORT).show();
-                        openNewActivity();
+                        openMain();
                     }
                 }
 
