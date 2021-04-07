@@ -30,7 +30,7 @@
         android:id="@+id/edtPassword"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/roundedet"
         android:ellipsize="start"
         android:gravity="center_horizontal"
