@@ -3,7 +3,11 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"
     android:padding="10dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    >
+    <gradient android:startColor="#FFFFFF"
+        android:endColor="#00FF00"
+        android:angle="270" />
 
 
     <solid android:color="#FFFFFF" />
@@ -11,5 +15,11 @@
         android:bottomRightRadius="15dp"
         android:bottomLeftRadius="15dp"
         android:topLeftRadius="15dp"
-        android:topRightRadius="15dp" />
+        android:topRightRadius="15dp"
+        android:radius="3dp"
+        />
+    <stroke
+        android:width="4dp"
+        android:color="#00b1c6" />
+
 </shape>
