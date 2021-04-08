@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtUser;
     EditText edtPassword;
 
-    Button btnSignUp, btnLogIn;
+    Button btnSignUp, btnLogIn, btn_Skip;
 
     boolean logStatus = false;
     FirebaseDatabase database;
@@ -44,11 +44,18 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogIn = (Button)findViewById(R.id.btn_log_in);
         btnSignUp = (Button)findViewById(R.id.btn_sign_up);
+        btn_Skip = (Button)findViewById(R.id.btn_Skip);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openNewActivity();
+            }
+        });
+        btn_Skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHomeActivity();
             }
         });
 
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegActivity.class);
         startActivity(intent);
     }
+
 
     public void openHomeActivity() {
         Intent intent = new Intent(this, Home.class);
