@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.util.Objects;
+
 public class RegActivity extends AppCompatActivity {
     EditText edtNewUser, edtNewPassword, edtNewEmail;
 
@@ -65,12 +67,12 @@ public class RegActivity extends AppCompatActivity {
     }
     //Skickar username, lösenord och mail till firebase.
     public void createAccount(){
+        try{
             User user = new User(edtNewUser.getText().toString(), edtNewPassword.getText().toString(), edtNewEmail.getText().toString());
-
             users.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.child(user.getUserName()).exists())
+                    if(dataSnapshot.child(Objects.requireNonNull(user.getUserName())).exists())
                         Toast.makeText(RegActivity.this, "User exists", Toast.LENGTH_SHORT).show();
                     else {
                         users.child(user.getUserName())
@@ -84,4 +86,8 @@ public class RegActivity extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             });
-}}
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
