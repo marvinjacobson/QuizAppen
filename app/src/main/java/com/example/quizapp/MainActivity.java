@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn = (Button)findViewById(R.id.btn_log_in);
         btnSignUp = (Button)findViewById(R.id.btn_sign_up);
 
-
-
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logIn(edtUser.getText().toString(), edtPassword.getText().toString());
-
-                
             }
         });
     }
@@ -100,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "User does not exists", Toast.LENGTH_SHORT).show();
 
             }
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
