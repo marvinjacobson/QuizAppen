@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#308BD1"
+    tools:context=".Home">
+
+    <Button
+        android:id="@+id/categories"
+        android:layout_width="138dp"
+        android:layout_height="62dp"
+        android:text="Kategorier"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/createQuiz"
+        android:layout_width="138dp"
+        android:layout_height="62dp"
+        android:text="Skapa frågesport"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories"
+        app:layout_constraintVertical_bias="0.191" />
+
+    <Button
+        android:id="@+id/quizOfDay"
+        android:layout_width="138dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="26dp"
+        android:text="Dagens frågesport"
+        app:layout_constraintBottom_toTopOf="@+id/categories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <Button
+        android:id="@+id/favoriteCategory"
+        android:layout_width="138dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="116dp"
+        android:text="Favoritkategori"
+        app:layout_constraintBottom_toTopOf="@+id/quizOfDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnSignUp, btnLogIn;
 
+    boolean logStatus = false;
     FirebaseDatabase database;
     DatabaseReference users;
     @Override
@@ -57,11 +58,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logIn(edtUser.getText().toString(), edtPassword.getText().toString());
+
+                
             }
         });
     }
     public void openNewActivity(){
         Intent intent = new Intent(this, RegActivity.class);
+        startActivity(intent);
+    }
+
+    public void openHomeActivity() {
+        Intent intent = new Intent(this, Home.class);
         startActivity(intent);
     }
 
@@ -76,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                         if(login.getPassword().equals(pwd)){
                             Toast.makeText(MainActivity.this, "Login ok", Toast.LENGTH_SHORT).show();
                             System.out.println("LOG IN OK!!!!!!!");
+                            openHomeActivity();
                         }
                         else
                             Toast.makeText(MainActivity.this, "Not ok", Toast.LENGTH_SHORT).show();
@@ -91,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "User does not exists", Toast.LENGTH_SHORT).show();
 
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
