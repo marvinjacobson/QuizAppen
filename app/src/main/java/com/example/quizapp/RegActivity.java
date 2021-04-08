@@ -56,9 +56,8 @@ public class RegActivity extends AppCompatActivity {
                createAccount();
             }
         });
-
-
     }
+
     //Gå till main view
     public void openMain(){
         Intent intent = new Intent(this, MainActivity.class);
@@ -83,8 +82,6 @@ public class RegActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
                 }
             });
-
 }}
