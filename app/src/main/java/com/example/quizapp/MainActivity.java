@@ -57,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //Öppna RegActivity view
     public void openNewActivity(){
         Intent intent = new Intent(this, RegActivity.class);
         startActivity(intent);
     }
-
+    //Öppna Home view
     public void openHomeActivity() {
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
