@@ -70,7 +70,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.803" />
 
-
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/gotoSettings"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
