@@ -40,7 +40,7 @@ public class CreateQuizActivity extends AppCompatActivity {
         ArrayAdapter<Integer> arrayAdapter2 = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, QuizCount);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        count.setAdapter(arrayAdapter);
+        count.setAdapter(arrayAdapter2);
 
 
     }

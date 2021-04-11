@@ -18,14 +18,14 @@
         android:text="Favoritkategori"
         android:textAllCaps="false"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/quizOfDay"
+        app:layout_constraintBottom_toTopOf="@+id/btn_quizOfDay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/quizOfDay"
+        android:id="@+id/btn_quizOfDay"
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
@@ -33,14 +33,14 @@
         android:text="Dagens frågesport"
         android:textSize="20dp"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/categories"
+        app:layout_constraintBottom_toTopOf="@+id/btn_categories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/createQuiz"
+        android:id="@+id/btn_createQuiz"
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
@@ -51,11 +51,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categories"
+        app:layout_constraintTop_toBottomOf="@+id/btn_categories"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/categories"
+        android:id="@+id/btn_categories"
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/gotoSettings"
+        android:id="@+id/btn_gotoSettings"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/settings"
