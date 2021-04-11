@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText edtUser;
     EditText edtPassword;
-
-    Button btnSignUp, btnLogIn, btn_Skip;
-
+    Button btnSignUp, btnLogIn, btnSkipLoggin;
     boolean logStatus = false;
     FirebaseDatabase database;
     DatabaseReference users;
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogIn = (Button)findViewById(R.id.btn_log_in);
         btnSignUp = (Button)findViewById(R.id.btn_sign_up);
-        btn_Skip = (Button)findViewById(R.id.btn_Skip);
+        btnSkipLoggin = (Button)findViewById(R.id.btn_Skip);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 openNewActivity();
             }
         });
-        btn_Skip.setOnClickListener(new View.OnClickListener() {
+
+        btnSkipLoggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openHomeActivity();
+                openSkipLoggin();
             }
         });
 
@@ -66,51 +65,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Skippa loggin och gå direkt till Home
+    public void openSkipLoggin() {
+        Intent intent = new Intent(this, Home.class);
+        System.out.println("Fungerar");
+        startActivity(intent);
+    }
+
+    //Öppna RegActivity view
     public void openNewActivity(){
         Intent intent = new Intent(this, RegActivity.class);
         startActivity(intent);
     }
-
-
+    //Öppna Home view
     public void openHomeActivity() {
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
     }
 
+    //Kollar så man skriver in rätt saker i rätt fält samt loggar in
     private void logIn(String user, String pwd) {
         users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child(user).exists()) {
-
-                    if(!user.isEmpty()) {
-                        User login = dataSnapshot.child(user).getValue(User.class);
-                        if(login.getPassword().equals(pwd)){
-                            Toast.makeText(MainActivity.this, "Login ok", Toast.LENGTH_SHORT).show();
-                            System.out.println("LOG IN OK!!!!!!!");
-                            openHomeActivity();
+                try {
+                    if(dataSnapshot.child(user).exists()) {
+                        if(!user.isEmpty()) {
+                            User login = dataSnapshot.child(user).getValue(User.class);
+                            if(login.getPassword().equals(pwd)){
+                                Toast.makeText(MainActivity.this, "Login ok", Toast.LENGTH_SHORT).show();
+                                System.out.println("LOG IN OK!!!!!!!");
+                                openHomeActivity();
+                            }
+                            else
+                                Toast.makeText(MainActivity.this, "Not ok", Toast.LENGTH_SHORT).show();
                         }
-                        else
-                            Toast.makeText(MainActivity.this, "Not ok", Toast.LENGTH_SHORT).show();
-
-
+                        else {
+                            Toast.makeText(MainActivity.this, "Enter user name", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else {
-                       Toast.makeText(MainActivity.this, "Enter user name", Toast.LENGTH_SHORT).show();
-
-                    }
+                    else
+                        Toast.makeText(MainActivity.this, "User does not exists", Toast.LENGTH_SHORT).show();
+                }catch (Exception e) {
+                    System.out.println(e);
                 }
-                else
-                    Toast.makeText(MainActivity.this, "User does not exists", Toast.LENGTH_SHORT).show();
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
-
-
 }
