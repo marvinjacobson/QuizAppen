@@ -17,6 +17,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         btnSettings = (Button)findViewById(R.id.btn_gotoSettings);
         btn_createQuiz = (Button)findViewById(R.id.btn_createQuiz);
+
         //Öppnar Settings
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
