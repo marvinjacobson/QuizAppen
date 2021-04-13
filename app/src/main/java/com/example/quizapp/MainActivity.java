@@ -99,14 +99,14 @@ public class MainActivity extends AppCompatActivity {
                                 openHomeActivity();
                             }
                             else
-                                Toast.makeText(MainActivity.this, "Not ok", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Fel lösenord", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(MainActivity.this, "Enter user name", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Skriv in användarnamn", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else
-                        Toast.makeText(MainActivity.this, "User does not exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Användaren finns inte", Toast.LENGTH_SHORT).show();
                 }catch (Exception e) {
                     System.out.println(e);
                 }
