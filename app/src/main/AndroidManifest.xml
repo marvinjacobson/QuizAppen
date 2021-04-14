@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
-        <activity android:name=".Model.Categories"></activity>
+        <activity android:name=".Categories"></activity>
         <activity android:name=".ChangeUserSettings" />
         <activity android:name=".Changepw" />
         <activity android:name=".Settings" />

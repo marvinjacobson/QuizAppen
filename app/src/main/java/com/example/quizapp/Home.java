@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.quizapp.Model.Categories;
-
 public class Home extends AppCompatActivity {
 
     private Button btnSettings, btn_createQuiz, btnCategories;
