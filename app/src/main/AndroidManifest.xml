@@ -12,7 +12,7 @@
         <activity android:name=".Model.Categories"></activity>
         <activity android:name=".ChangeUserSettings" />
         <activity android:name=".Changepw" />
-        <activity android:name=".Settings" />
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".CreateQuizActivity" />
         <activity android:name=".Home" />
         <activity android:name=".RegActivity" />

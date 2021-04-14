@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.quizapp.Model.User;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private FirebaseAuth auth;
     EditText edtUser;
     EditText edtPassword;
     Button btnSignUp, btnLogIn, btnSkipLoggin;
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
-
+        auth = FirebaseAuth.getInstance();
         edtUser = (EditText)findViewById(R.id.edtUser);
         edtPassword = (EditText)findViewById(R.id.edtPassword);
 
@@ -61,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logIn(edtUser.getText().toString(), edtPassword.getText().toString());
+                String email = edtUser.getText().toString();
+                String pw = edtPassword.getText().toString();
+                logIn(email,pw);
+
             }
         });
     }
@@ -85,35 +91,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Kollar så man skriver in rätt saker i rätt fält samt loggar in
-    private void logIn(String user, String pwd) {
-        users.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void logIn(String user, String pw) {
+        auth.signInWithEmailAndPassword(user,pw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                try {
-                    if(dataSnapshot.child(user).exists()) {
-                        if(!user.isEmpty()) {
-                            User login = dataSnapshot.child(user).getValue(User.class);
-                            if(login.getPassword().equals(pwd)){
-                                Toast.makeText(MainActivity.this, "Login ok", Toast.LENGTH_SHORT).show();
-                                System.out.println("LOG IN OK!!!!!!!");
-                                openHomeActivity();
-                            }
-                            else
-                                Toast.makeText(MainActivity.this, "Fel lösenord", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(MainActivity.this, "Skriv in användarnamn", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else
-                        Toast.makeText(MainActivity.this, "Användaren finns inte", Toast.LENGTH_SHORT).show();
-                }catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(MainActivity.this, "Inloggning lyckad", Toast.LENGTH_SHORT).show();
+                openHomeActivity();
+                finish();
             }
         });
+        }
     }
-}

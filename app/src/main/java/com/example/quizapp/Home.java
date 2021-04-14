@@ -45,7 +45,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void openSettings() {
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
     public void openCreateQuiz() {

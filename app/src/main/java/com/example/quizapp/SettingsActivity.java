@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class Settings extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+
+public class SettingsActivity extends AppCompatActivity {
 
     private Button btnChangePW,btnChangeUserSettings,btnLoggout,btnDeleteAccount;
 
@@ -31,6 +34,15 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openChangeUserSettings();
+            }
+        });
+
+        btnLoggout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(SettingsActivity.this, "Du är nu utloggad", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
             }
         });
     }
