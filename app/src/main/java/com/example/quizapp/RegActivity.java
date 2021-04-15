@@ -110,6 +110,7 @@ public class RegActivity extends AppCompatActivity {
                             users.child(user.getUserName()).setValue(user);
                             Toast.makeText(RegActivity.this, "Konto regsisterat", Toast.LENGTH_SHORT).show();
                             openMain();
+                            finish();
 
 
                         }
