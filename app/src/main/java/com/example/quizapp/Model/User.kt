@@ -1,14 +1,14 @@
 package com.example.quizapp.Model
 
 class User {
+    var uID: String? = null
     var userName: String? = null
-    var password: String? = null
-    var email: String? = null
 
-    constructor() {}
-    constructor(userName: String?, password: String?, email: String?) {
+
+    constructor(name: String) {}
+    constructor(userName: String?, uID: String?) {
         this.userName = userName
-        this.password = password
-        this.email = email
+        this.uID = uID
+
     }
 }

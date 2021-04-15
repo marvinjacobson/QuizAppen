@@ -1,14 +1,14 @@
 package com.example.quizapp;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,22 +20,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
-import java.util.Objects;
 
 public class RegActivity extends AppCompatActivity {
-    EditText edtNewUser, edtNewPassword, edtNewEmail;
+    EditText edtUser, edtNewPassword, edtNewEmail;
     TextView tvLoggin;
     Button btn_sign_up;
     private FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference users;
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +41,8 @@ public class RegActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
-
-        edtNewUser = (EditText)findViewById(R.id.edtUser);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        edtUser = (EditText)findViewById(R.id.edtUser);
         edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
         edtNewPassword = (EditText)findViewById(R.id.edtPassword);
         auth = FirebaseAuth.getInstance();
@@ -76,12 +74,20 @@ public class RegActivity extends AppCompatActivity {
             }
         });
     }
+    public void writeNewUser(String userId, String name) {
+        User user = new User(name);
+
+        mDatabase.child("users").child(userId).setValue(user);
+    }
 
     private void registerUser(String email, String pw) {
         auth.createUserWithEmailAndPassword(email,pw).addOnCompleteListener(RegActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    String uId = FirebaseAuth.getInstance().getUid();
+                    String userName = edtUser.getText().toString();
+                    writeNewUser(uId, userName);
                     Toast.makeText(RegActivity.this, "Konto regsisterat", Toast.LENGTH_SHORT).show();
                     openMain();
                 }
