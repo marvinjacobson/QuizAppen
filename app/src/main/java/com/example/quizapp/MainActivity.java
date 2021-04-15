@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     //Skippa loggin och gå direkt till Home
