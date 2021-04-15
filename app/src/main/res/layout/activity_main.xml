@@ -53,7 +53,6 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/roundedet"
-
         android:text="Sign up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_log_in" />
