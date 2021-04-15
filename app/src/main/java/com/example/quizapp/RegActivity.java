@@ -1,11 +1,13 @@
 package com.example.quizapp;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 
@@ -22,8 +24,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import static com.example.quizapp.R.drawable.roundedeterror;
 
 
 public class RegActivity extends AppCompatActivity {
@@ -61,24 +67,68 @@ public class RegActivity extends AppCompatActivity {
             public void onClick(View v) {
                String email = edtNewEmail.getText().toString();
                String pw = edtNewPassword.getText().toString();
-
-               if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pw)){
+               String username = edtUser.getText().toString();
+               if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pw) || TextUtils.isEmpty(username)){
                    Toast.makeText(RegActivity.this, "Kom ihåg att fylla alla fält", Toast.LENGTH_SHORT).show();
             }
                else if(pw.length() < 6){
                    Toast.makeText(RegActivity.this, "Lösenordet är inte starkt nog!", Toast.LENGTH_SHORT).show();
+                   edtNewPassword.setBackgroundResource(roundedeterror);
+
+               }
+               else if(username.length() > 12){
+                   Toast.makeText(RegActivity.this, "Användarnamn får vara max 12 bokstäver!", Toast.LENGTH_SHORT).show();
+                   edtUser.setBackgroundResource(roundedeterror);
                }
                else{
-                   registerUser(email, pw);
+                   writeNewUser(email, pw);
 
                }
             }
         });
     }
-    public void writeNewUser(String userId, String name) {
-        
-        User user = new User(userId,name);
-        users.child(user.getUserName()).setValue(user);
+    public void writeNewUser(String email, String pw) {
+        String uId = FirebaseAuth.getInstance().getUid();
+        String userName = edtUser.getText().toString();
+        userName = userName.substring(0,1).toUpperCase() + userName.substring(1).toLowerCase();
+
+        User user = new User(userName, uId);
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.child(user.getUserName()).exists()){
+                    edtUser.setBackgroundResource(roundedeterror);
+                    Toast.makeText(RegActivity.this, "Användarnamn måste vara unikt", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else{
+                    auth.createUserWithEmailAndPassword(email,pw).addOnCompleteListener(RegActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+
+                            users.child(user.getUserName()).setValue(user);
+                            Toast.makeText(RegActivity.this, "Konto regsisterat", Toast.LENGTH_SHORT).show();
+                            openMain();
+
+
+                        }
+                        else{
+                            edtNewEmail.setBackgroundResource(roundedeterror);
+                            Toast.makeText(RegActivity.this, "Konto registrering misslyckad", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void registerUser(String email, String pw) {

@@ -1,8 +1,9 @@
 package com.example.quizapp.Model
 
 class User {
-    var uID: String? = null
     var userName: String? = null
+    var uID: String? = null
+
 
 
     constructor(name: String) {}
