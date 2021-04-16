@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         edtUser = (EditText)findViewById(R.id.edtUser);
         edtPassword = (EditText)findViewById(R.id.edtPassword);
-
         btnLogIn = (Button)findViewById(R.id.btn_log_in);
         btnSignUp = (Button)findViewById(R.id.btn_sign_up);
         btnSkipLoggin = (Button)findViewById(R.id.btn_Skip);
@@ -67,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Skriver felmeddelanden om du har skrivit fel användarnamn eller lösenord
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,12 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     logIn(email,pw);
                     System.out.println(logginstatus);
                 }
-
-
-
             }
         });
-
     }
 
     //Skippa loggin och gå direkt till Home
@@ -97,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Home.class);
         System.out.println("Fungerar");
         startActivity(intent);
-
     }
 
     //Öppna RegActivity view
@@ -105,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegActivity.class);
         startActivity(intent);
     }
+
     //Öppna Home view
     public void openHomeActivity() {
         Intent intent = new Intent(this, Home.class);
@@ -117,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
-
                         if (task.isSuccessful()) {
                            openHomeActivity();
                            finish();

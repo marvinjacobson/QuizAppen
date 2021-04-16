@@ -51,6 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(SettingsActivity.this, "Du är nu utloggad", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+                finish();
             }
         });
 
@@ -69,6 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 deleteUser();
                                 openMainActivity();
                                 Toast.makeText(SettingsActivity.this, "Ditt konto är nu raderat", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         });
                 //Om nej, stäng alert och radera inte kontot.
@@ -95,6 +97,7 @@ public class SettingsActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Kontot är raderat");
+                            finish();
                         }
                     }
                 });
