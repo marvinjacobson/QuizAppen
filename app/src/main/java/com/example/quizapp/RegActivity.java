@@ -131,25 +131,7 @@ public class RegActivity extends AppCompatActivity {
         });
 
     }
-
-    private void registerUser(String email, String pw) {
-        auth.createUserWithEmailAndPassword(email,pw).addOnCompleteListener(RegActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    String uId = FirebaseAuth.getInstance().getUid();
-                    String userName = edtUser.getText().toString();
-                    writeNewUser(uId, userName);
-                    Toast.makeText(RegActivity.this, "Konto regsisterat", Toast.LENGTH_SHORT).show();
-                    openMain();
-                }
-                else{
-                    Toast.makeText(RegActivity.this, "Konto registrering misslyckad", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-    }
+    
 
     //Gå till main view
     public void openMain(){

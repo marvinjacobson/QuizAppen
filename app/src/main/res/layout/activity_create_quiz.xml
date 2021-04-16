@@ -18,7 +18,7 @@
         android:background="@drawable/roundedet"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:hint="Ge din quiz ett namn..."
         android:inputType="textPersonName"
         android:textColor="@color/black"
