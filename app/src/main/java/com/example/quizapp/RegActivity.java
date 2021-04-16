@@ -52,7 +52,7 @@ public class RegActivity extends AppCompatActivity {
         edtUser = (EditText)findViewById(R.id.edtUser);
         edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
         edtNewPassword = (EditText)findViewById(R.id.edtPassword);
-        auth = FirebaseAuth.getInstance();
+
         tvLoggin = (TextView)findViewById(R.id.tv_loggin);
         btn_sign_up = (Button)findViewById(R.id.btn_sign_up);
 
