@@ -26,10 +26,6 @@ public class Changepw extends AppCompatActivity {
         // Mail
         String email = user.getEmail();
 
-        // Kolla om användarens mail är varifierad
-        boolean emailVerified = user.isEmailVerified();
-        String uid = user.getUid();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
