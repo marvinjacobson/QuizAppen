@@ -101,13 +101,17 @@ public class CreateQuizActivity extends AppCompatActivity {
         quizes.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.child(quiz.getQuizID()).exists()){
-                    quizes.child(quiz.getQuizName()).setValue(quiz);
+                boolean existing;
+                existing = snapshot.child(quiz.getQuizID()).exists();
+                System.out.println(existing);
+                if(!existing){
+                    edtQuizName.setBackgroundResource(roundedeterror);
+                    Toast.makeText(CreateQuizActivity.this, "Du har redan skapat en quiz med det här namnet", Toast.LENGTH_SHORT).show();
 
                 }
                 else{
-                    edtQuizName.setBackgroundResource(roundedeterror);
-                    Toast.makeText(CreateQuizActivity.this, "Du har redan skapat en quiz med det här namnet", Toast.LENGTH_SHORT).show();
+
+                    quizes.child(quiz.getQuizName()).setValue(quiz);
                 }
             }
 
