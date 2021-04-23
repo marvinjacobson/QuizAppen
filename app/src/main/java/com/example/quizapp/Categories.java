@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 
 import com.example.quizapp.Interface.ItemClickListener;
 import com.example.quizapp.Model.Category;
@@ -25,7 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Categories extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class Categories extends AppCompatActivity {
                     .add(android.R.id.content, new CategoryFragment()).commit();
 
         }
+
 
     }
 

@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.quizapp.R.drawable.roundedeterror;
@@ -31,9 +32,10 @@ public class CreateQuizActivity extends AppCompatActivity {
     Spinner spinner_categori, spinner_number;
     AppCompatButton btn_next;
     EditText edtQuizName;
-    DatabaseReference quizes;
+    DatabaseReference quizes, categories;
 
-    String[] Categories=new  String[] {"Film", "Natur", "Musik"};
+    List<String> catNames;
+    /*String[] Categories=new  String[] {"Film", "Natur", "Musik"};*/
     Integer[] QuizCount = {5, 6, 7, 9, 10};
     String currentUser;
     FirebaseDatabase database;
@@ -53,15 +55,35 @@ public class CreateQuizActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         quizes = database.getReference("Quiz");
 
+        catNames = new ArrayList<>();
+        categories = FirebaseDatabase.getInstance().getReference();
+        categories.child("Category").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    String spinnerName = childSnapshot.child("Name").getValue(String.class);
+                    catNames.add(spinnerName);
+                }
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(CreateQuizActivity.this, android.R.layout.simple_spinner_item, catNames);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                category.setAdapter(arrayAdapter);
+            }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Categories);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        /*ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Categories);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        category.setAdapter(arrayAdapter);
+        category.setAdapter(arrayAdapter);*/
 
         ArrayAdapter<Integer> arrayAdapter2 = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, QuizCount);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         count.setAdapter(arrayAdapter2);
 
         btn_next.setOnClickListener(new View.OnClickListener() {

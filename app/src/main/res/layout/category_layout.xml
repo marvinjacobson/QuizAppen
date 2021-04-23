@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    >
 
     <!--<TextView
         android:id="@+id/categoryName"
@@ -22,7 +23,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/categoryName"
         android:layout_width="285dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:background="@drawable/roundedet"
         android:gravity="center"
         android:text="Category name"
