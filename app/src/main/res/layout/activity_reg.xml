@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/appbakgrund"
+    android:background="@drawable/quizsmalllogo"
     tools:context=".MainActivity">
 
 
@@ -12,7 +12,7 @@
         android:id="@+id/edtUser"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="188dp"
         android:background="@drawable/roundedet"
         android:ellipsize="start"
         android:fontFamily="sans-serif"
@@ -22,27 +22,9 @@
         android:textColorHint="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/roundedet"
-        android:ellipsize="start"
-        android:gravity="center"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUser" />
 
     <EditText
         android:id="@+id/edtNewEmail"
@@ -58,19 +40,37 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+        app:layout_constraintBottom_toTopOf="@+id/fav_cat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtPassword" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/roundedet"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUser" />
 
     <Button
         android:id="@+id/btn_sign_up"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="223dp"
-        android:layout_height="51dp"
+        android:layout_height="55dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="136dp"
         android:background="@drawable/roundedet"
         android:text="Sign up"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
         android:id="@+id/tv_loggin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="55dp"
         android:layout_marginBottom="25dp"
         android:text="Har du redan konto? Klicka här för att logga in"
         android:textSize="18sp"
@@ -89,6 +89,35 @@
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_sign_up"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/spinner_fav_cat"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="44dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/tv_fav_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="11dp"
+        android:fontFamily="@font/robotoblack"
+        android:text="Din favorit quiz kategori"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_fav_cat"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail"
         app:layout_constraintVertical_bias="1.0" />
 
 
