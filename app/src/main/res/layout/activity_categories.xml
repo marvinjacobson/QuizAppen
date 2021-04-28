@@ -9,7 +9,7 @@
     >
 
 
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,6 +18,14 @@
         tools:layout_editor_absoluteX="95dp"
         tools:layout_editor_absoluteY="213dp">
 
-    </FrameLayout>
+    </FrameLayout>-->
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listOfCat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
