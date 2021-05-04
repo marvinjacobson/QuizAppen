@@ -4,6 +4,194 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bakgrundutanlogga"
     tools:context=".CreateQuestions">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_nextQuestion"
+        android:layout_width="154dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/roundedet"
+        android:text="Nästa fråga"
+        android:textAllCaps="false"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_categori" />
+
+    <EditText
+        android:id="@+id/edt_questionname"
+        android:layout_width="320dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/roundedet"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:hint="Skriv din fråga här..."
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/edt_option1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/edt_option3"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/roundedet"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:hint="Svarsalternativ 3..."
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_option2" />
+
+    <EditText
+        android:id="@+id/edt_option2"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundedet"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:hint="Svarsalternativ 2..."
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/edt_option3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_option1" />
+
+    <EditText
+        android:id="@+id/edt_option1"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/roundedet"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:hint="Svarsalternativ 1..."
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/edt_option2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_questionname" />
+
+
+
+    <TextView
+        android:id="@+id/tv_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="12dp"
+        android:text="Rätt svar"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/group1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_option3" />
+
+
+    <RadioGroup
+        android:id="@+id/group1"
+        android:layout_width="128dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="11dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_nextQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+
+        <RadioButton
+            android:id="@+id/rad_1"
+            android:layout_width="43dp"
+            android:layout_height="30dp"
+
+            android:layout_marginBottom="53dp"
+            android:text="1"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_nextQuestion"
+            app:layout_constraintEnd_toStartOf="@+id/rad_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="1.0"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rad_2"
+            android:layout_width="43dp"
+            android:layout_height="30dp"
+
+            android:layout_marginBottom="53dp"
+            android:text="2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_nextQuestion"
+            app:layout_constraintEnd_toStartOf="@+id/rad_3"
+            app:layout_constraintStart_toEndOf="@+id/rad_1"
+            app:layout_constraintTop_toBottomOf="@+id/textView"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rad_3"
+            android:layout_width="43dp"
+            android:layout_height="30dp"
+
+
+            android:layout_marginBottom="53dp"
+            android:text="3"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_nextQuestion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rad_2"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="1.0"></RadioButton>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="12dp"
+        android:text="Rätt svar"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/group1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_option3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

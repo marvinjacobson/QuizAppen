@@ -44,10 +44,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtPassword" />
+        app:layout_constraintTop_toBottomOf="@id/edtFriendSearch" />
 
     <EditText
-        android:id="@+id/edtPassword"
+        android:id="@+id/edtFriendSearch"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_marginTop="44dp"

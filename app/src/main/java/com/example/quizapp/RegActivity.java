@@ -1,13 +1,11 @@
 package com.example.quizapp;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 
@@ -58,7 +56,7 @@ public class RegActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         edtUser = (EditText)findViewById(R.id.edtUser);
         edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
-        edtNewPassword = (EditText)findViewById(R.id.edtPassword);
+        edtNewPassword = (EditText)findViewById(R.id.edtFriendSearch);
         Spinner category = (Spinner)findViewById(R.id.spinner_fav_cat);
 
 

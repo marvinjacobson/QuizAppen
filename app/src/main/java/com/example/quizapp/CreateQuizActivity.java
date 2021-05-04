@@ -35,7 +35,6 @@ public class CreateQuizActivity extends AppCompatActivity {
     DatabaseReference quizes, categories;
 
     List<String> catNames;
-    /*String[] Categories=new  String[] {"Film", "Natur", "Musik"};*/
     Integer[] QuizCount = {5, 6, 7, 9, 10};
     String currentUser;
     FirebaseDatabase database;
@@ -120,20 +119,26 @@ public class CreateQuizActivity extends AppCompatActivity {
         String quizID = name + currentUser;
         quizID = quizID.replaceAll("\\s+","");
         Quiz quiz = new Quiz(name,currentUser,cat, count, quizID);
+        String finalQuizID = quizID;
         quizes.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean existing;
-                existing = snapshot.child(quiz.getQuizID()).exists();
-                System.out.println(existing);
-                if(!existing){
+
+                if(snapshot.child(quiz.getQuizID()).exists()){
                     edtQuizName.setBackgroundResource(roundedeterror);
                     Toast.makeText(CreateQuizActivity.this, "Du har redan skapat en quiz med det här namnet", Toast.LENGTH_SHORT).show();
 
                 }
                 else{
-
+                    Integer currentquestion = 1;
                     quizes.child(quiz.getQuizName()).setValue(quiz);
+                    Toast.makeText(CreateQuizActivity.this, "Din quiz har skapats", Toast.LENGTH_SHORT).show();
+                    Intent i= new Intent(CreateQuizActivity.this, CreateQuestions.class);
+                    i.putExtra("questionCount", count);
+                    i.putExtra("currentQuestion", currentquestion);
+                    i.putExtra("quizID", finalQuizID);
+                    startActivity(i);
+                    finish();
                 }
             }
 
