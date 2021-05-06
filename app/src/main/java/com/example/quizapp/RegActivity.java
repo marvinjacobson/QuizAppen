@@ -118,21 +118,22 @@ public class RegActivity extends AppCompatActivity {
         });
     }
     public void writeNewUser(String email, String pw, String cat) {
-        String uId = FirebaseAuth.getInstance().getUid();
+
         String userName = edtUser.getText().toString();
 
         userName = userName.substring(0,1).toUpperCase() + userName.substring(1).toLowerCase();
+        String finalUserName = userName;
+        users.orderByChild("userName").equalTo(userName).addValueEventListener(new ValueEventListener() {
 
-        User user = new User(userName, uId, cat);
-        users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (!snapshot.child(user.getUserName()).exists()) {
+                if (!snapshot.exists()) {
                     auth.createUserWithEmailAndPassword(email,pw).addOnCompleteListener(RegActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-
+                            String uId = FirebaseAuth.getInstance().getUid();
+                            User user = new User(finalUserName, uId, cat);
                             users.child(user.getUserName()).setValue(user);
                             Toast.makeText(RegActivity.this, "Konto regsisterat", Toast.LENGTH_SHORT).show();
                             openMain();
@@ -167,6 +168,10 @@ public class RegActivity extends AppCompatActivity {
     public void openMain(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+    private boolean usernameExists(String username) {
+        DatabaseReference fdbRefer = FirebaseDatabase.getInstance().getReference("Users/"+username);
+        return (fdbRefer != null);
     }
 
 }

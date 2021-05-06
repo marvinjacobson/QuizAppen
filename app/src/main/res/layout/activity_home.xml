@@ -78,4 +78,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_gotofriends"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="249dp"
+        android:background="@drawable/ic_baseline_person_24"
+        app:layout_constraintBottom_toTopOf="@+id/btnfave"
+        app:layout_constraintEnd_toStartOf="@+id/btn_gotoSettings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
