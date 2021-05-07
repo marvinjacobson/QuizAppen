@@ -51,6 +51,7 @@ public class CreateQuizActivity extends AppCompatActivity {
         Spinner count = (Spinner)findViewById(R.id.spinner_number);
         auth = FirebaseAuth.getInstance();
         currentUser = FirebaseAuth.getInstance().getUid();
+        System.out.println(currentUser);
         database = FirebaseDatabase.getInstance();
         quizes = database.getReference("Quiz");
 

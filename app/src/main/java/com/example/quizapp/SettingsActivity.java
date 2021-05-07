@@ -20,17 +20,25 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private Button btnChangePW,btnChangeUserSettings,btnLoggout,btnDeleteAccount;
+    private Button btnChangePW,btnChangeUserSettings,btnLoggout,btnDeleteAccount, btnChangeCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        btnChangeCategory = (Button)findViewById(R.id.btn_changecategory);
         btnChangePW = (Button)findViewById(R.id.btn_Changepw);
         btnChangeUserSettings = (Button)findViewById(R.id.btn_changeusersettings);
         btnLoggout = (Button)findViewById(R.id.btn_logout);
         btnDeleteAccount = (Button)findViewById(R.id.btn_deleteaccount);
+
+        btnChangeCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openChangeCategory();
+            }
+        });
 
         btnChangePW.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +110,11 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
     }
-
+    //Öppnar ChangeCategory
+    public void openChangeCategory() {
+        Intent intent = new Intent(this, ChangeCategory.class);
+        startActivity(intent);
+    }
     //Öppnar ChangePW
     public void openChangePW() {
         Intent intent = new Intent(this, Changepw.class);

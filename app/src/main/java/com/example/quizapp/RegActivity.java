@@ -134,7 +134,7 @@ public class RegActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             String uId = FirebaseAuth.getInstance().getUid();
                             User user = new User(finalUserName, uId, cat);
-                            users.child(user.getUserName()).setValue(user);
+                            users.child(user.getUID()).setValue(user);
                             Toast.makeText(RegActivity.this, "Konto regsisterat", Toast.LENGTH_SHORT).show();
                             openMain();
                             finish();

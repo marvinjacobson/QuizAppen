@@ -7,7 +7,7 @@ class User {
 
 
 
-    constructor(name: String) {}
+    constructor() {}
     constructor(userName: String?, uID: String?, category: String?) {
         this.userName = userName
         this.uID = uID
