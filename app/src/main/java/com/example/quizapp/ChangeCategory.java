@@ -46,6 +46,7 @@ public class ChangeCategory extends AppCompatActivity {
         categories.child("Category").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Hämtar alla kategorier och visar dom i vår spinner (Dropdown menu)
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     String spinnerName = childSnapshot.child("Name").getValue(String.class);
                     catNames.add(spinnerName);
@@ -53,6 +54,7 @@ public class ChangeCategory extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ChangeCategory.this, android.R.layout.simple_spinner_item, catNames);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
                 newCategory.setAdapter(arrayAdapter);
+                //Ändrar favorit kategori när du klickar på spara knappen
                 btn_saveNewCategory.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
