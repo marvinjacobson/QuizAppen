@@ -66,46 +66,49 @@ public class PlayQuiz extends AppCompatActivity {
         btn_A2 = (AppCompatButton)findViewById(R.id.btn_A2);
         btn_A3 = (AppCompatButton)findViewById(R.id.btn_A3);
 
-        final List<Question> questionList= new ArrayList<Question>();
 
-       /* mQuizDatabase.addValueEventListener(new ValueEventListener() {
+        ArrayList<Question> questionArray = new ArrayList<Question>();
+
+
+        mQuizDatabase.orderByChild("questionID").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot item: snapshot.getChildren()){
-                    if(item.getKey().equals(question)){
-                        Question thisQuestion = snapshot.getValue(Question.class);
-                        questionList.add(thisQuestion);
+                for(DataSnapshot postSnapsshot: snapshot.getChildren()){
+                    if(postSnapsshot.getKey() == question){
+                        Question ques = postSnapsshot.getValue(Question.class);
+
+                        questionArray.add(ques);
                     }
+
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
             }
-        });*/
-
-        Query query = mQuizDatabase.equalTo(question);
+        });
 
 
 
-
-
-        DatabaseReference currentQuestionObj = mQuizDatabase.child(question);
-
-        DatabaseReference questiontext = currentQuestionObj.child("questiontext");
+        Question currentques = questionArray.get(0);
 
 
 
 
-        String A1 = currentQuestionObj.child("answer1").toString();
-        String A2 = currentQuestionObj.child("answer2").toString();
-        String A3 = currentQuestionObj.child("answer3").toString();
-        tv_Question.setText(questiontext);
+
+
+
+        String A1 = currentques.getAnswer1();
+        String A2 = currentques.getAnswer2();
+        String A3 = currentques.getAnswer3();
+        tv_Question.setText("test");
         btn_A1.setText(A2);
         btn_A2.setText(A2);
         btn_A3.setText(A3);
-        String corrAns = currentQuestionObj.child("correctanswer").toString();
-        final Integer correctanswer = Integer.parseInt(corrAns);
-        final String nextQuestion = currentQuestionObj.child("nextQuestion").toString();
+        Integer corrAns = currentques.getCorrectanswer();
+        final Integer correctanswer = corrAns;
+        final String nextQuestion = currentques.getNextQuestion();
         Integer answer = 0;
 
         btn_A1.setOnClickListener(new View.OnClickListener() {

@@ -47,6 +47,12 @@ public class Home extends AppCompatActivity {
                 openCategories();
             }
         });
+        btn_fave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPlayQuiz();
+            }
+        });
 
 
     }
