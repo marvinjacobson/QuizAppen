@@ -1,36 +1,19 @@
 package com.example.quizapp;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 
 import com.example.quizapp.Interface.ItemClickListener;
 import com.example.quizapp.Model.Category;
-import com.example.quizapp.R;
 import com.example.quizapp.ViewHolder.CategoryViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class Categories extends AppCompatActivity {
 
@@ -44,11 +27,7 @@ public class Categories extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
-        /*if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(android.R.id.content, new CategoryFragment()).commit();
 
-        }*/
         database = FirebaseDatabase.getInstance();
         categories = database.getReference("Category");
         listCategory = (RecyclerView) findViewById(R.id.listOfCat);
@@ -74,13 +53,18 @@ public class Categories extends AppCompatActivity {
                 categoryViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-
+                        openPlay();
                     }
                 });
             }
         };
         adapter.notifyDataSetChanged();
         listCategory.setAdapter(adapter);
+    }
+
+    public void openPlay() {
+        Intent intent = new Intent(this, Start.class);
+        startActivity(intent);
     }
 
 

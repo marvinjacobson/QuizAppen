@@ -20,6 +20,7 @@
         />
     <stroke
         android:width="4dp"
-        android:color="#00b1c6" />
+        android:color="#00b1c6"
+    />
 
 </shape>
