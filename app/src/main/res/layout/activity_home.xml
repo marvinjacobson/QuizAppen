@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnfave"
+        android:id="@+id/btn_fave"
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginTop="116dp"
@@ -18,14 +18,22 @@
         android:text="Favoritkategori"
         android:textAllCaps="false"
         android:textSize="20dp"
+<<<<<<< Updated upstream
         app:layout_constraintBottom_toTopOf="@+id/quizOfDay"
+=======
+        app:layout_constraintBottom_toTopOf="@+id/btn_A1"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
+<<<<<<< Updated upstream
         android:id="@+id/quizOfDay"
+=======
+        android:id="@+id/btn_A1"
+>>>>>>> Stashed changes
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
@@ -33,14 +41,22 @@
         android:text="Dagens frågesport"
         android:textSize="20dp"
         android:textAllCaps="false"
+<<<<<<< Updated upstream
         app:layout_constraintBottom_toTopOf="@+id/categories"
+=======
+        app:layout_constraintBottom_toTopOf="@+id/btn_A2"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
+<<<<<<< Updated upstream
         android:id="@+id/createQuiz"
+=======
+        android:id="@+id/btn_A3"
+>>>>>>> Stashed changes
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
@@ -51,11 +67,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< Updated upstream
         app:layout_constraintTop_toBottomOf="@+id/categories"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/categories"
+=======
+        app:layout_constraintTop_toBottomOf="@+id/btn_A2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_A2"
+>>>>>>> Stashed changes
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
@@ -78,4 +102,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< Updated upstream
+=======
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_gotofriends"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="249dp"
+        android:background="@drawable/ic_baseline_person_24"
+        app:layout_constraintBottom_toTopOf="@+id/btn_fave"
+        app:layout_constraintEnd_toStartOf="@+id/btn_gotoSettings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+>>>>>>> Stashed changes
 </androidx.constraintlayout.widget.ConstraintLayout>

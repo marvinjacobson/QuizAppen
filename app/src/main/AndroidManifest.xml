@@ -9,7 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
+<<<<<<< Updated upstream
         <activity android:name=".Settings"></activity>
+=======
+        <activity android:name=".PlayQuiz"></activity>
+        <activity android:name=".AddFriendActivity" />
+        <activity android:name=".ShareQuiz" />
+        <activity android:name=".CreateQuestions" />
+        <activity android:name=".Categories" />
+        <activity android:name=".ChangeUserSettings" />
+        <activity android:name=".Changepw" />
+        <activity android:name=".SettingsActivity" />
+>>>>>>> Stashed changes
         <activity android:name=".CreateQuizActivity" />
         <activity android:name=".Home" />
         <activity android:name=".RegActivity" />

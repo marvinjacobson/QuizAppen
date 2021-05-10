@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/quizsmalllogo"
+    tools:context=".PlayQuiz">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_A1"
+        android:layout_width="285dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="273dp"
+        android:background="@drawable/roundedet"
+        android:text="Svar1"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_A2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_Question"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_A2"
+        android:layout_width="285dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginStart="67dp"
+        android:layout_marginBottom="198dp"
+        android:background="@drawable/roundedet"
+        android:text="Svar2"
+        android:textAllCaps="false"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_A3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_A1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_A3"
+        android:layout_width="285dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="68dp"
+
+
+        android:layout_marginBottom="117dp"
+        android:background="@drawable/roundedet"
+        android:text="Svar3"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_A2"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/tv_Question"
+        android:layout_width="285dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="217dp"
+        android:background="@drawable/roundedet"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_A1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</RelativeLayout>
+
+
+
