@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Home extends AppCompatActivity {
 
-    private Button btnSettings, btn_createQuiz, btnCategories, btnFriends;
+    private Button btnSettings, btn_createQuiz, btnCategories, btnFriends, btn_fave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class Home extends AppCompatActivity {
         btnFriends = (Button)findViewById(R.id.btn_gotofriends);
         btn_createQuiz = (Button)findViewById(R.id.btn_createQuiz);
         btnCategories = (Button)findViewById(R.id.btn_categories);
+        btn_fave = (Button)findViewById(R.id.btn_fave);
 
         //Öppnar Settings
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +48,7 @@ public class Home extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void openSettings() {
@@ -64,6 +66,11 @@ public class Home extends AppCompatActivity {
 
     public void openCategories() {
         Intent intent = new Intent(this, Categories.class);
+        startActivity(intent);
+    }
+    public void openPlayQuiz(){
+        Intent intent = new Intent(this, PlayQuiz.class);
+        intent.putExtra("quizID", "PlayQuizTestOXtpYobZJfVO99CQz1NdgHhcJCB3");
         startActivity(intent);
     }
 }

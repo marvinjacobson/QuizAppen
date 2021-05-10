@@ -81,8 +81,16 @@ public class CreateQuestions extends AppCompatActivity {
                     String quizID = intent.getStringExtra("quizID");
                     Integer questioncount = intent.getIntExtra("questionCount", 0);
                     Integer currentquestion = intent.getIntExtra("currentQuestion", 0);
+                    String nextQuestion;
+                    if(questioncount < currentquestion){
+                        nextQuestion = "lastquestion";
+                    }
+                    else{
+                        Integer num = currentquestion + 1;
+                        nextQuestion = quizID + num;
+                    }
 
-                    createQuestion(question, answer1, answer2, answer3, selected_answer, questioncount, currentquestion, quizID);
+                    createQuestion(question, answer1, answer2, answer3, selected_answer, questioncount, currentquestion, quizID, nextQuestion);
 
                 }
                 if (TextUtils.isEmpty(question)) {
@@ -123,9 +131,9 @@ public class CreateQuestions extends AppCompatActivity {
 
     }
 
-    public void createQuestion(String questionText, String answer1, String answer2, String answer3, Integer correct_answer, Integer questioncount, Integer currentquestion, String quizID){
+    public void createQuestion(String questionText, String answer1, String answer2, String answer3, Integer correct_answer, Integer questioncount, Integer currentquestion, String quizID, String nextquestion){
         String questionID = quizID + currentquestion.toString();
-        Question question = new Question(questionID, questionText,currentquestion, correct_answer,answer1,answer2,answer3,quizID);
+        Question question = new Question(questionID, questionText,currentquestion, nextquestion, correct_answer,answer1,answer2,answer3,quizID);
         questions.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -138,16 +146,15 @@ public class CreateQuestions extends AppCompatActivity {
                     i.putExtra("currentQuestion", nextQuestion);
                     i.putExtra("quizID", quizID);
                     startActivity(i);
-                    finish();
                 }
                 else{
                     Intent i= new Intent(CreateQuestions.this, ShareQuiz.class);
                     i.putExtra("quizId", quizID);
                     startActivity(i);
-                    finish();
 
                 }
-                }
+                finish();
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

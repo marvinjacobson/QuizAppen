@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnfave"
+        android:id="@+id/btn_fave"
         android:layout_width="285dp"
         android:layout_height="60dp"
         android:layout_marginTop="116dp"
@@ -62,8 +62,8 @@
         android:background="@drawable/roundedet"
         android:text="Kategorier"
         android:textAllCaps="false"
-        android:textSize="20dp"
         android:textColorHighlight="#FFFFFF"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:layout_height="85dp"
         android:layout_marginBottom="249dp"
         android:background="@drawable/ic_baseline_person_24"
-        app:layout_constraintBottom_toTopOf="@+id/btnfave"
+        app:layout_constraintBottom_toTopOf="@+id/btn_fave"
         app:layout_constraintEnd_toStartOf="@+id/btn_gotoSettings"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
