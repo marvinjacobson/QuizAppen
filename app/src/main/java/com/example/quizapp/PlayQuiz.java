@@ -67,10 +67,12 @@ public class PlayQuiz extends AppCompatActivity {
         btn_A3 = (AppCompatButton)findViewById(R.id.btn_A3);
 
 
-        ArrayList<Question> questionArray = new ArrayList<Question>();
+        ArrayList<Question> questionArray = new ArrayList<>();
 
+        if(questionArray.size() > 0)
+            questionArray.clear();
 
-        mQuizDatabase.orderByChild("questionID").addValueEventListener(new ValueEventListener() {
+        mQuizDatabase.orderByChild("questionID").equalTo(question).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot postSnapsshot: snapshot.getChildren()){
@@ -103,7 +105,7 @@ public class PlayQuiz extends AppCompatActivity {
         String A2 = currentques.getAnswer2();
         String A3 = currentques.getAnswer3();
         tv_Question.setText("test");
-        btn_A1.setText(A2);
+        btn_A1.setText(A1);
         btn_A2.setText(A2);
         btn_A3.setText(A3);
         Integer corrAns = currentques.getCorrectanswer();

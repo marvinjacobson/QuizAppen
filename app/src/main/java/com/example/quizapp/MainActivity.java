@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.quizapp.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn = (Button)findViewById(R.id.btn_log_in);
         btnSignUp = (Button)findViewById(R.id.btn_sign_up);
         btnSkipLoggin = (Button)findViewById(R.id.btn_Skip);
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
