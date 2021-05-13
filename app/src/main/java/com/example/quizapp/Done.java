@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.quizapp.Common.Common;
 import com.example.quizapp.Model.QuestionScore;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,6 +23,7 @@ public class Done extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference question_score;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class Done extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         question_score = database.getReference("Question_score");
+        auth = FirebaseAuth.getInstance();
 
         txtResultScore = (TextView)findViewById(R.id.txtTotalScore);
         txtResultQuestion = (TextView)findViewById(R.id.txtTotalQuestion);
@@ -56,11 +59,13 @@ public class Done extends AppCompatActivity {
             progressBar.setMax(totalQuestion);
             progressBar.setProgress(correctAnswer);
 
-           /* question_score.child(String.format("%s_%s", Common.currentUser.getUserName(),
+            /*String currentplayer = auth.getUid();
+
+            question_score.child(String.format("%s_%s", currentplayer,
                     Common.categoryId))
-                    .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getUserName(),
+                    .setValue(new QuestionScore(String.format("%s_%s", currentplayer,
                             Common.categoryId),
-                            Common.currentUser.getUserName(),
+                            currentplayer,
                             String.valueOf(score)));*/
         }
 

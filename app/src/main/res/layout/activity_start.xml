@@ -14,7 +14,7 @@
         android:layout_height="60dp"
         android:background="@drawable/roundedet"
         android:textSize="20dp"
-        android:text="PLAY!"
+        android:text="Spela!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

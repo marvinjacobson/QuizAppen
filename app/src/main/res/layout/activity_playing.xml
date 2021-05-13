@@ -10,9 +10,10 @@
 
     <TextView
         android:id="@+id/question_text"
-        android:textSize="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="75dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,16 +25,17 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/question_text">
+        app:layout_constraintTop_toBottomOf="@+id/question_text">
 
 
         <LinearLayout
             android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="10dp">
 
@@ -88,35 +90,42 @@
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="5"
+                android:max="30"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_answerA"
-                android:layout_width="match_parent"
+                android:layout_width="285dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:background="@drawable/roundedet"
-                android:text="Answer A"
-                />
+                android:text="Answer A" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_answerB"
-                android:layout_width="match_parent"
+                android:layout_width="285dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedet"
+                android:gravity="center"
                 android:text="Answer B" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_answerC"
-                android:layout_width="match_parent"
+                android:layout_width="285dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedet"
                 android:text="Answer C" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_answerD"
-                android:layout_width="match_parent"
+                android:layout_width="285dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedet"
                 android:text="Answer D" />
 
         </LinearLayout>

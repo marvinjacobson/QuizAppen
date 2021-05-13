@@ -67,7 +67,7 @@ public class PlayQuiz extends AppCompatActivity {
         btn_A3 = (AppCompatButton)findViewById(R.id.btn_A3);
 
 
-        ArrayList<Question> questionArray = new ArrayList<>();
+        List<Question> questionArray = new ArrayList<>();
 
         if(questionArray.size() > 0)
             questionArray.clear();
