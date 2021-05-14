@@ -1,19 +1,17 @@
-
 package com.example.quizapp;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.quizapp.Model.Quiz;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,10 +43,10 @@ public class CreateQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_quiz);
-        btn_next = (AppCompatButton)findViewById(R.id.btn_Next);
-        edtQuizName = (EditText)findViewById(R.id.edtQuizName);
-        Spinner category = (Spinner)findViewById(R.id.spinner_categori);
-        Spinner count = (Spinner)findViewById(R.id.spinner_number);
+        btn_next = (AppCompatButton) findViewById(R.id.btn_Next);
+        edtQuizName = (EditText) findViewById(R.id.edtQuizName);
+        Spinner category = (Spinner) findViewById(R.id.spinner_categori);
+        Spinner count = (Spinner) findViewById(R.id.spinner_number);
         auth = FirebaseAuth.getInstance();
         currentUser = FirebaseAuth.getInstance().getUid();
         System.out.println(currentUser);
@@ -60,7 +58,7 @@ public class CreateQuizActivity extends AppCompatActivity {
         categories.child("Category").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot childSnapshot : snapshot.getChildren()) {
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     String spinnerName = childSnapshot.child("Name").getValue(String.class);
                     catNames.add(spinnerName);
                 }
@@ -95,19 +93,18 @@ public class CreateQuizActivity extends AppCompatActivity {
                 String selectedCat = category.getSelectedItem().toString();
                 String questionName = edtQuizName.getText().toString();
 
-                if (TextUtils.isEmpty(questionName)){
+                if (TextUtils.isEmpty(questionName)) {
                     edtQuizName.setBackgroundResource(roundedeterror);
                     Toast.makeText(CreateQuizActivity.this, "Ge din quiz ett namn", Toast.LENGTH_SHORT).show();
                 }
-                if (questionName.length() > 15){
+                if (questionName.length() > 15) {
                     edtQuizName.setBackgroundResource(roundedeterror);
                     Toast.makeText(CreateQuizActivity.this, "Ditt namn får innehålla max 15 tecken", Toast.LENGTH_SHORT).show();
                 }
-                if(!TextUtils.isEmpty(questionName) || questionName.length() > 15){
+                if (!TextUtils.isEmpty(questionName) || questionName.length() > 15) {
 
                     createNewQuiz(questCount_, selectedCat, questionName);
                 }
-
 
 
             }
@@ -115,26 +112,26 @@ public class CreateQuizActivity extends AppCompatActivity {
 
 
     }
-    public void createNewQuiz(Integer count, String cat, String name){
+
+    public void createNewQuiz(Integer count, String cat, String name) {
 
         String quizID = name + currentUser;
-        quizID = quizID.replaceAll("\\s+","");
-        Quiz quiz = new Quiz(name,currentUser,cat, count, quizID);
+        quizID = quizID.replaceAll("\\s+", "");
+        Quiz quiz = new Quiz(name, currentUser, cat, count, quizID);
         String finalQuizID = quizID;
         quizes.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(snapshot.child(quiz.getQuizID()).exists()){
+                if (snapshot.child(quiz.getQuizID()).exists()) {
                     edtQuizName.setBackgroundResource(roundedeterror);
                     Toast.makeText(CreateQuizActivity.this, "Du har redan skapat en quiz med det här namnet", Toast.LENGTH_SHORT).show();
 
-                }
-                else{
+                } else {
                     Integer currentquestion = 1;
                     quizes.child(quiz.getQuizName()).setValue(quiz);
                     Toast.makeText(CreateQuizActivity.this, "Din quiz har skapats", Toast.LENGTH_SHORT).show();
-                    Intent i= new Intent(CreateQuizActivity.this, CreateQuestions.class);
+                    Intent i = new Intent(CreateQuizActivity.this, CreateQuestions.class);
                     i.putExtra("questionCount", count);
                     i.putExtra("currentQuestion", currentquestion);
                     i.putExtra("quizID", finalQuizID);

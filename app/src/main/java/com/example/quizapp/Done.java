@@ -1,7 +1,5 @@
 package com.example.quizapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +7,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.quizapp.Common.Common;
-import com.example.quizapp.Model.QuestionScore;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,10 +32,10 @@ public class Done extends AppCompatActivity {
         question_score = database.getReference("Question_score");
         auth = FirebaseAuth.getInstance();
 
-        txtResultScore = (TextView)findViewById(R.id.txtTotalScore);
-        txtResultQuestion = (TextView)findViewById(R.id.txtTotalQuestion);
-        progressBar = (ProgressBar)findViewById(R.id.doneProgressBar);
-        btnTryAgain = (Button)findViewById(R.id.btn_TryAgain);
+        txtResultScore = (TextView) findViewById(R.id.txtTotalScore);
+        txtResultQuestion = (TextView) findViewById(R.id.txtTotalQuestion);
+        progressBar = (ProgressBar) findViewById(R.id.doneProgressBar);
+        btnTryAgain = (Button) findViewById(R.id.btn_TryAgain);
 
         btnTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +47,7 @@ public class Done extends AppCompatActivity {
         });
 
         Bundle extra = getIntent().getExtras();
-        if(extra != null) {
+        if (extra != null) {
             int score = extra.getInt("SCORE");
             int totalQuestion = extra.getInt("TOTAL");
             int correctAnswer = extra.getInt("CORRECT");

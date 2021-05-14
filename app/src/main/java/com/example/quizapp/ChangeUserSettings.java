@@ -10,14 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.quizapp.R;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.quizapp.R.drawable.roundedet;
@@ -32,9 +33,9 @@ public class ChangeUserSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_user_settings);
-        edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
-        edtEmailAgain = (EditText)findViewById(R.id.edtEmailAgain);
-        edtPassAgain = (EditText)findViewById(R.id.edtPassAgain);
+        edtNewEmail = (EditText) findViewById(R.id.edtNewEmail);
+        edtEmailAgain = (EditText) findViewById(R.id.edtEmailAgain);
+        edtPassAgain = (EditText) findViewById(R.id.edtPassAgain);
         btnSaveNewEmail = (Button) findViewById(R.id.btn_SaveNewEmail);
         btnSaveNewEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,25 +44,25 @@ public class ChangeUserSettings extends AppCompatActivity {
                 String currentEmailAgain = edtEmailAgain.getText().toString();
                 String currentPassAgain = edtPassAgain.getText().toString();
                 //Kollar så man inte skriver in fel saker i fel rutor
-                if (!TextUtils.isEmpty(newEmail) && !TextUtils.isEmpty(currentEmailAgain) && !TextUtils.isEmpty(currentPassAgain) && !newEmail.equals(currentEmailAgain)){
+                if (!TextUtils.isEmpty(newEmail) && !TextUtils.isEmpty(currentEmailAgain) && !TextUtils.isEmpty(currentPassAgain) && !newEmail.equals(currentEmailAgain)) {
                     reauthenticate(newEmail, currentPassAgain, currentEmailAgain);
                     edtNewEmail.setBackgroundResource(roundedet);
                     edtPassAgain.setBackgroundResource(roundedet);
                     edtEmailAgain.setBackgroundResource(roundedet);
                 }
-                if (TextUtils.isEmpty(newEmail)){
+                if (TextUtils.isEmpty(newEmail)) {
                     Toast.makeText(ChangeUserSettings.this, "Kom ihåg att fylla i en ny mail", Toast.LENGTH_SHORT).show();
                     edtNewEmail.setBackgroundResource(roundedeterror);
                 }
-                if (TextUtils.isEmpty(currentEmailAgain)){
+                if (TextUtils.isEmpty(currentEmailAgain)) {
                     Toast.makeText(ChangeUserSettings.this, "Kom ihåg att fylla i din nuvarande mail", Toast.LENGTH_SHORT).show();
                     edtEmailAgain.setBackgroundResource(roundedeterror);
                 }
-                if (TextUtils.isEmpty(currentPassAgain)){
+                if (TextUtils.isEmpty(currentPassAgain)) {
                     Toast.makeText(ChangeUserSettings.this, "Kom ihåg att fylla i ditt nuvarande lösenord", Toast.LENGTH_SHORT).show();
                     edtPassAgain.setBackgroundResource(roundedeterror);
                 }
-                if (newEmail.equals(currentEmailAgain)){
+                if (newEmail.equals(currentEmailAgain)) {
                     Toast.makeText(ChangeUserSettings.this, "Din nya mail får inte vara samma som din nuvarande email", Toast.LENGTH_SHORT).show();
                     edtNewEmail.setBackgroundResource(roundedeterror);
                     edtEmailAgain.setBackgroundResource(roundedeterror);
@@ -79,7 +80,7 @@ public class ChangeUserSettings extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Log.d(TAG, "User re-authenticated.");
 
                             //Kod för att ändra email
@@ -100,13 +101,13 @@ public class ChangeUserSettings extends AppCompatActivity {
                                                         openMainActivity();
                                                     }
                                                 }, 5000);
-                                            }else {
+                                            } else {
                                                 Toast.makeText(ChangeUserSettings.this, "Dubbelkolla nya mailadressen", Toast.LENGTH_SHORT).show();
                                                 edtNewEmail.setBackgroundResource(roundedeterror);
                                             }
                                         }
                                     });
-                        }else {
+                        } else {
                             Toast.makeText(ChangeUserSettings.this, "Dubbelkolla email och lösenord", Toast.LENGTH_SHORT).show();
                             edtPassAgain.setBackgroundResource(roundedeterror);
                             edtEmailAgain.setBackgroundResource(roundedeterror);
@@ -114,8 +115,9 @@ public class ChangeUserSettings extends AppCompatActivity {
                     }
                 });
     }
+
     //Går tillbaka till main
-    public void openMainActivity(){
+    public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -1,10 +1,5 @@
 package com.example.quizapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,18 +19,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private Button btnChangePW,btnChangeUserSettings,btnLoggout,btnDeleteAccount, btnChangeCategory;
+    private Button btnChangePW, btnChangeUserSettings, btnLoggout, btnDeleteAccount, btnChangeCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        btnChangeCategory = (Button)findViewById(R.id.btn_changecategory);
-        btnChangePW = (Button)findViewById(R.id.btn_Changepw);
-        btnChangeUserSettings = (Button)findViewById(R.id.btn_changeusersettings);
-        btnLoggout = (Button)findViewById(R.id.btn_logout);
-        btnDeleteAccount = (Button)findViewById(R.id.btn_deleteaccount);
+        btnChangeCategory = (Button) findViewById(R.id.btn_changecategory);
+        btnChangePW = (Button) findViewById(R.id.btn_Changepw);
+        btnChangeUserSettings = (Button) findViewById(R.id.btn_changeusersettings);
+        btnLoggout = (Button) findViewById(R.id.btn_logout);
+        btnDeleteAccount = (Button) findViewById(R.id.btn_deleteaccount);
 
         btnChangeCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
     }
+
     //Raderar konto
     public void deleteUser() {
 
@@ -110,23 +110,27 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
     }
+
     //Öppnar ChangeCategory
     public void openChangeCategory() {
         Intent intent = new Intent(this, ChangeCategory.class);
         startActivity(intent);
     }
+
     //Öppnar ChangePW
     public void openChangePW() {
         Intent intent = new Intent(this, Changepw.class);
         startActivity(intent);
     }
+
     //Öppnar ChangeUserSettings
     public void openChangeUserSettings() {
         Intent intent = new Intent(this, ChangeUserSettings.class);
         startActivity(intent);
     }
+
     //Går tillbaka till main
-    public void openMainActivity(){
+    public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

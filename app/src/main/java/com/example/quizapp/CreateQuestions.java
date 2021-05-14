@@ -1,9 +1,5 @@
 package com.example.quizapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.quizapp.Model.Question;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,14 +36,14 @@ public class CreateQuestions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_create_questions);
-        btn_nextQuestion = (AppCompatButton)findViewById(R.id.btn_nextQuestion);
-        edt_option1 = (EditText)findViewById(R.id.edt_option1);
-        edt_option2 = (EditText)findViewById(R.id.edt_option2);
-        edt_option3 = (EditText)findViewById(R.id.edt_option3);
-        rad_1 = (RadioButton)findViewById(R.id.rad_1);
-        rad_2 = (RadioButton)findViewById(R.id.rad_2);
-        rad_3 = (RadioButton)findViewById(R.id.rad_3);
-        edt_questioname = (EditText)findViewById(R.id.edt_questionname);
+        btn_nextQuestion = (AppCompatButton) findViewById(R.id.btn_nextQuestion);
+        edt_option1 = (EditText) findViewById(R.id.edt_option1);
+        edt_option2 = (EditText) findViewById(R.id.edt_option2);
+        edt_option3 = (EditText) findViewById(R.id.edt_option3);
+        rad_1 = (RadioButton) findViewById(R.id.rad_1);
+        rad_2 = (RadioButton) findViewById(R.id.rad_2);
+        rad_3 = (RadioButton) findViewById(R.id.rad_3);
+        edt_questioname = (EditText) findViewById(R.id.edt_questionname);
         database = FirebaseDatabase.getInstance();
         questions = database.getReference("Question");
 
@@ -82,10 +82,9 @@ public class CreateQuestions extends AppCompatActivity {
                     Integer questioncount = intent.getIntExtra("questionCount", 0);
                     Integer currentquestion = intent.getIntExtra("currentQuestion", 0);
                     String nextQuestion;
-                    if(questioncount < currentquestion){
+                    if (questioncount < currentquestion) {
                         nextQuestion = "lastquestion";
-                    }
-                    else{
+                    } else {
                         Integer num = currentquestion + 1;
                         nextQuestion = quizID + num;
                     }
@@ -123,32 +122,29 @@ public class CreateQuestions extends AppCompatActivity {
 
                 }
 
-
-
-
-            } });
+            }
+        });
 
 
     }
 
-    public void createQuestion(String questionText, String answer1, String answer2, String answer3, Integer correct_answer, Integer questioncount, Integer currentquestion, String quizID, String nextquestion){
+    public void createQuestion(String questionText, String answer1, String answer2, String answer3, Integer correct_answer, Integer questioncount, Integer currentquestion, String quizID, String nextquestion) {
         String questionID = quizID + currentquestion.toString();
-        Question question = new Question(questionID, questionText,currentquestion, nextquestion, correct_answer,answer1,answer2,answer3,quizID);
+        Question question = new Question(questionID, questionText, currentquestion, nextquestion, correct_answer, answer1, answer2, answer3, quizID);
         questions.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 questions.child(question.getQuestionID()).setValue(question);
                 Toast.makeText(CreateQuestions.this, "Din fråga har sparats", Toast.LENGTH_SHORT).show();
-                if (currentquestion < questioncount){
-                    Integer nextQuestion = currentquestion +1;
-                    Intent i= new Intent(CreateQuestions.this, CreateQuestions.class);
+                if (currentquestion < questioncount) {
+                    Integer nextQuestion = currentquestion + 1;
+                    Intent i = new Intent(CreateQuestions.this, CreateQuestions.class);
                     i.putExtra("questionCount", questioncount);
                     i.putExtra("currentQuestion", nextQuestion);
                     i.putExtra("quizID", quizID);
                     startActivity(i);
-                }
-                else{
-                    Intent i= new Intent(CreateQuestions.this, ShareQuiz.class);
+                } else {
+                    Intent i = new Intent(CreateQuestions.this, ShareQuiz.class);
                     i.putExtra("quizId", quizID);
                     startActivity(i);
 

@@ -1,7 +1,5 @@
 package com.example.quizapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quizapp.Common.Common;
 import com.google.firebase.database.DatabaseReference;
@@ -38,16 +38,16 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         database = FirebaseDatabase.getInstance();
         questions = database.getReference("Questions");
 
-        txtScore = (TextView)findViewById(R.id.txtScore);
-        txtQuestionNum = (TextView)findViewById(R.id.txtTotalQuestion);
-        question_text = (TextView)findViewById(R.id.question_text);
+        txtScore = (TextView) findViewById(R.id.txtScore);
+        txtQuestionNum = (TextView) findViewById(R.id.txtTotalQuestion);
+        question_text = (TextView) findViewById(R.id.question_text);
 
-        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        btnA = (Button)findViewById(R.id.btn_answerA);
-        btnB = (Button)findViewById(R.id.btn_answerB);
-        btnC = (Button)findViewById(R.id.btn_answerC);
-        btnD = (Button)findViewById(R.id.btn_answerD);
+        btnA = (Button) findViewById(R.id.btn_answerA);
+        btnB = (Button) findViewById(R.id.btn_answerB);
+        btnC = (Button) findViewById(R.id.btn_answerC);
+        btnD = (Button) findViewById(R.id.btn_answerD);
 
         btnA.setOnClickListener(this);
         btnB.setOnClickListener(this);
@@ -61,14 +61,13 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
 
         mCountDown.cancel();
-        if(index < totalQuestion) {
-            Button clickedButton = (Button)v;
-            if(clickedButton.getText().equals(Common.questionList.get(index).getCorrectAnswer())) {
-                score+=10;
+        if (index < totalQuestion) {
+            Button clickedButton = (Button) v;
+            if (clickedButton.getText().equals(Common.questionList.get(index).getCorrectAnswer())) {
+                score += 10;
                 correctAnswer++;
                 showQuestion(++index);
-            }
-            else {
+            } else {
                 Intent intent = new Intent(this, Done.class);
                 Bundle dataSend = new Bundle();
                 dataSend.putInt("SCORE", score);
@@ -87,7 +86,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     private void showQuestion(int index) {
 
 
-        if(index < totalQuestion) {
+        if (index < totalQuestion) {
             thisQuestion++;
             txtQuestionNum.setText(String.format("%d / %d", thisQuestion, totalQuestion));
             progressBar.setProgress(0);
@@ -103,8 +102,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
             mCountDown.start();
 
-        }
-        else {
+        } else {
             Intent intent = new Intent(this, Done.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("SCORE", score);

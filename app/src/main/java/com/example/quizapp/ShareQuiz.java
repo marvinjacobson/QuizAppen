@@ -1,8 +1,8 @@
 package com.example.quizapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ShareQuiz extends AppCompatActivity {
 

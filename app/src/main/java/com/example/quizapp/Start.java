@@ -1,15 +1,14 @@
 package com.example.quizapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.quizapp.Common.Common;
-import com.example.quizapp.Model.Question;
 import com.example.quizapp.Model.Questions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +24,7 @@ public class Start extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference questions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ public class Start extends AppCompatActivity {
 
         loadQuestion(Common.categoryId);
 
-        btnPlay = (Button)findViewById(R.id.btn_play);
+        btnPlay = (Button) findViewById(R.id.btn_play);
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +48,7 @@ public class Start extends AppCompatActivity {
 
     private void loadQuestion(String categoryId) {
 
-        if(Common.questionList.size() > 0) {
+        if (Common.questionList.size() > 0) {
             Common.questionList.clear();
         }
 
@@ -56,7 +56,7 @@ public class Start extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                             Questions ques = postSnapshot.getValue(Questions.class);
                             Common.questionList.add(ques);
                         }

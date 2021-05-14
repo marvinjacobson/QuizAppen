@@ -1,9 +1,6 @@
 package com.example.quizapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Changepw extends AppCompatActivity {
@@ -23,14 +23,14 @@ public class Changepw extends AppCompatActivity {
     Button btnSendPassReset;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // Mail
-        String email = user.getEmail();
+    // Mail
+    String email = user.getEmail();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changepw);
-        btnSendPassReset = (Button)findViewById(R.id.btn_SendPassResetMail);
+        btnSendPassReset = (Button) findViewById(R.id.btn_SendPassResetMail);
 
         btnSendPassReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,7 @@ public class Changepw extends AppCompatActivity {
     }
 
     //Går tillbaka till main
-    public void openMainActivity(){
+    public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

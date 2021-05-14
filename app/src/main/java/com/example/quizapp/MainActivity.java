@@ -1,8 +1,5 @@
 package com.example.quizapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.quizapp.Model.User;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         auth = FirebaseAuth.getInstance();
-        edtUser = (EditText)findViewById(R.id.edtUser);
-        edtPassword = (EditText)findViewById(R.id.edtFriendSearch);
-        btnLogIn = (Button)findViewById(R.id.btn_log_in);
-        btnSignUp = (Button)findViewById(R.id.btn_sign_up);
-        btnSkipLoggin = (Button)findViewById(R.id.btn_Skip);
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        edtPassword = (EditText) findViewById(R.id.edtFriendSearch);
+        btnLogIn = (Button) findViewById(R.id.btn_log_in);
+        btnSignUp = (Button) findViewById(R.id.btn_sign_up);
+        btnSkipLoggin = (Button) findViewById(R.id.btn_Skip);
 
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -65,16 +64,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edtUser.getText().toString();
                 String pw = edtPassword.getText().toString();
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     edtUser.setBackgroundResource(R.drawable.roundedeterror);
                     Toast.makeText(MainActivity.this, "Vänligen fyll i din mail adress", Toast.LENGTH_SHORT).show();
-                }
-                else if(TextUtils.isEmpty(pw)){
+                } else if (TextUtils.isEmpty(pw)) {
                     edtPassword.setBackgroundResource(R.drawable.roundedeterror);
                     Toast.makeText(MainActivity.this, "Vänligen fyll i ditt lösenord", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    logIn(email,pw);
+                } else {
+                    logIn(email, pw);
                     System.out.println(logginstatus);
                 }
             }
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Öppna RegActivity view
-    public void openNewActivity(){
+    public void openNewActivity() {
         Intent intent = new Intent(this, RegActivity.class);
         startActivity(intent);
     }
@@ -102,16 +99,15 @@ public class MainActivity extends AppCompatActivity {
 
     //Kollar så man skriver in rätt saker i rätt fält samt loggar in
     private void logIn(String user, String pw) {
-        auth.signInWithEmailAndPassword(user,pw).addOnCompleteListener(this,
+        auth.signInWithEmailAndPassword(user, pw).addOnCompleteListener(this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                           openHomeActivity();
-                           finish();
+                            openHomeActivity();
+                            finish();
                             Toast.makeText(MainActivity.this, "välkommen!", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
                             edtUser.setBackgroundResource(R.drawable.roundedeterror);
                             edtPassword.setBackgroundResource(R.drawable.roundedeterror);
                             Toast.makeText(MainActivity.this, "Dubbelkolla email och lösenord!", Toast.LENGTH_SHORT).show();
@@ -120,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        }
+    }
 
-     }
+}
 

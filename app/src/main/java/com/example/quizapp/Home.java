@@ -1,11 +1,11 @@
 package com.example.quizapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Home extends AppCompatActivity {
 
@@ -15,11 +15,11 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        btnSettings = (Button)findViewById(R.id.btn_gotoSettings);
-        btnFriends = (Button)findViewById(R.id.btn_gotofriends);
-        btn_createQuiz = (Button)findViewById(R.id.btn_createQuiz);
-        btnCategories = (Button)findViewById(R.id.btn_categories);
-        btn_fave = (Button)findViewById(R.id.btn_fave);
+        btnSettings = (Button) findViewById(R.id.btn_gotoSettings);
+        btnFriends = (Button) findViewById(R.id.btn_gotofriends);
+        btn_createQuiz = (Button) findViewById(R.id.btn_createQuiz);
+        btnCategories = (Button) findViewById(R.id.btn_categories);
+        btn_fave = (Button) findViewById(R.id.btn_fave);
 
         //Öppnar Settings
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +64,12 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
     public void openFriends() {
         Intent intent = new Intent(this, AddFriendActivity.class);
         startActivity(intent);
     }
+
     public void openCreateQuiz() {
         Intent intent = new Intent(this, CreateQuizActivity.class);
         startActivity(intent);
@@ -77,7 +79,8 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(this, Categories.class);
         startActivity(intent);
     }
-    public void openPlayQuiz(){
+
+    public void openPlayQuiz() {
         Intent intent = new Intent(this, PlayQuiz.class);
         intent.putExtra("quizID", "PlayQuizTestOXtpYobZJfVO99CQz1NdgHhcJCB3");
         startActivity(intent);
