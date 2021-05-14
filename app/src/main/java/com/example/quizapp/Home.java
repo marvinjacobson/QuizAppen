@@ -28,25 +28,28 @@ public class Home extends AppCompatActivity {
                 openSettings();
             }
         });
+        //Öppnar Settings
         btnFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFriends();
             }
         });
+        //Öppnar CreateQuiz
         btn_createQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openCreateQuiz();
             }
         });
-
+        //Öppnar Kategorier
         btnCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openCategories();
             }
         });
+        //Öppnar PlayQuiz
         btn_fave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

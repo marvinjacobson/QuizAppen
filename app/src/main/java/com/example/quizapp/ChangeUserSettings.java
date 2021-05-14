@@ -95,6 +95,7 @@ public class ChangeUserSettings extends AppCompatActivity {
                                                 handler.postDelayed(new Runnable() {
                                                     @Override
                                                     public void run() {
+                                                        //När allt är klart så loggas man ut och skickas till inlogg sidan efter 5 sekunder.
                                                         FirebaseAuth.getInstance().signOut();
                                                         openMainActivity();
                                                     }

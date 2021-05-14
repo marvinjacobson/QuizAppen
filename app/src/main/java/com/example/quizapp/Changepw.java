@@ -37,7 +37,7 @@ public class Changepw extends AppCompatActivity {
             public void onClick(View v) {
                 sendPasswordReset();
                 Toast.makeText(Changepw.this, "Återställnings mail är skickat, du kommer nu loggas ut.", Toast.LENGTH_SHORT).show();
-                //Loggar ut efter 5 sec.
+                //Loggar ut efter 5 sec och går tillbaka till inlogg sidan.
                 final Handler handler = new Handler(Looper.getMainLooper());
                 handler.postDelayed(new Runnable() {
                     @Override
