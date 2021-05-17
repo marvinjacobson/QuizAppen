@@ -52,9 +52,10 @@ public class CreateQuizActivity extends AppCompatActivity {
         System.out.println(currentUser);
         database = FirebaseDatabase.getInstance();
         quizes = database.getReference("Quiz");
-
         catNames = new ArrayList<>();
         categories = FirebaseDatabase.getInstance().getReference();
+
+        //Kollar vilken kategori man väljer
         categories.child("Category").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -84,6 +85,7 @@ public class CreateQuizActivity extends AppCompatActivity {
         arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         count.setAdapter(arrayAdapter2);
 
+        //Ger felmeddelande om något är fel annars skappas quizen
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,14 +107,13 @@ public class CreateQuizActivity extends AppCompatActivity {
 
                     createNewQuiz(questCount_, selectedCat, questionName);
                 }
-
-
             }
         });
 
 
     }
 
+    //Metod för att skapa en ny quiz
     public void createNewQuiz(Integer count, String cat, String name) {
 
         String quizID = name + currentUser;

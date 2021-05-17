@@ -46,6 +46,7 @@ public class Start extends AppCompatActivity {
         });
     }
 
+    //Laddar frågor baserat på vilken kategori som valts
     private void loadQuestion(String categoryId) {
 
         if (Common.questionList.size() > 0) {

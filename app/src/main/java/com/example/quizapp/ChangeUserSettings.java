@@ -73,9 +73,9 @@ public class ChangeUserSettings extends AppCompatActivity {
 
     public void reauthenticate(String newEmail, String password, String oldEmail) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // Get auth credentials from the user for re-authentication
+        // Hämta auth information från användaren för re-autentication
         AuthCredential credential = EmailAuthProvider
-                .getCredential(oldEmail, password); // Current Login Credentials \\
+                .getCredential(oldEmail, password);
         user.reauthenticate(credential)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

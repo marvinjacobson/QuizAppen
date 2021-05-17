@@ -92,6 +92,7 @@ public class CreateQuestions extends AppCompatActivity {
                     createQuestion(question, answer1, answer2, answer3, selected_answer, questioncount, currentquestion, quizID, nextQuestion);
 
                 }
+                //Olika felmeddelande baserat på vad som är fel
                 if (TextUtils.isEmpty(question)) {
 
                     edt_questioname.setBackgroundResource(roundedeterror);
@@ -128,6 +129,7 @@ public class CreateQuestions extends AppCompatActivity {
 
     }
 
+    //Metod för att skapa en ny fråga
     public void createQuestion(String questionText, String answer1, String answer2, String answer3, Integer correct_answer, Integer questioncount, Integer currentquestion, String quizID, String nextquestion) {
         String questionID = quizID + currentquestion.toString();
         Question question = new Question(questionID, questionText, currentquestion, nextquestion, correct_answer, answer1, answer2, answer3, quizID);

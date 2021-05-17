@@ -35,7 +35,6 @@ public class PlayQuiz extends AppCompatActivity {
     private String firstquestion;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         database = FirebaseDatabase.getInstance();
@@ -46,12 +45,12 @@ public class PlayQuiz extends AppCompatActivity {
         Integer score = intent.getIntExtra("currentScore", 0);
         firstquestion = intent.getStringExtra("quizID");
         String currentQuestion = intent.getStringExtra("currentQuestion");
+
         if (firstquestion != null) {
             question = firstquestion + 1;
         } else if (currentQuestion != null) {
             question = currentQuestion;
         }
-
 
         tv_Question = (TextView) findViewById(R.id.tv_Question);
         btn_A1 = (AppCompatButton) findViewById(R.id.btn_A1);
@@ -70,10 +69,8 @@ public class PlayQuiz extends AppCompatActivity {
                 for (DataSnapshot postSnapsshot : snapshot.getChildren()) {
                     if (postSnapsshot.getKey() == question) {
                         Question ques = postSnapsshot.getValue(Question.class);
-
                         questionArray.add(ques);
                     }
-
                 }
             }
 
@@ -83,10 +80,7 @@ public class PlayQuiz extends AppCompatActivity {
             }
         });
 
-
         Question currentques = questionArray.get(0);
-
-
         String A1 = currentques.getAnswer1();
         String A2 = currentques.getAnswer2();
         String A3 = currentques.getAnswer3();
@@ -99,6 +93,7 @@ public class PlayQuiz extends AppCompatActivity {
         final String nextQuestion = currentques.getNextQuestion();
         Integer answer = 0;
 
+        //Alla tre knappar kollar om det är rätt svar eller inte samt sparar din score
         btn_A1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,11 +134,9 @@ public class PlayQuiz extends AppCompatActivity {
 
             }
         });
-
-
     }
 
-
+    //Metoden för att kolla om det är rätt svar eller inte samt spara score
     public void QuestionAnswered(String nextQuestion, Integer answer, Integer correctAnswer, Integer score) {
         String currentplayer = auth.getUid();
         String resultID = currentplayer + question;
@@ -166,7 +159,6 @@ public class PlayQuiz extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
 
@@ -177,11 +169,6 @@ public class PlayQuiz extends AppCompatActivity {
             i.putExtra("currentQuestion", nextQuestion);
             startActivity(i);
             finish();
-
         }
-
-
     }
-
-
 }

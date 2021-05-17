@@ -50,6 +50,7 @@ public class Changepw extends AppCompatActivity {
         });
     }
 
+    //Metod för att skicka mejlet
     public void sendPasswordReset() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String emailAddress = email;

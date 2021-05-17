@@ -46,7 +46,6 @@ public class RegActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reg);
         List<String> catNames;
         auth = FirebaseAuth.getInstance();
-
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -54,13 +53,12 @@ public class RegActivity extends AppCompatActivity {
         edtNewEmail = (EditText) findViewById(R.id.edtNewEmail);
         edtNewPassword = (EditText) findViewById(R.id.edtFriendSearch);
         Spinner category = (Spinner) findViewById(R.id.spinner_fav_cat);
-
-
         tvLoggin = (TextView) findViewById(R.id.tv_loggin);
         btn_sign_up = (Button) findViewById(R.id.btn_sign_up);
-
         catNames = new ArrayList<>();
         categories = FirebaseDatabase.getInstance().getReference();
+
+        //Visar alla kategorier i vår spinner
         categories.child("Category").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,21 +77,24 @@ public class RegActivity extends AppCompatActivity {
             }
         });
 
+        //Går till Main
         tvLoggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMain();
             }
         });
+
+        //Skapar kontot
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String favCategory = category.getSelectedItem().toString();
                 System.out.println(favCategory);
                 String email = edtNewEmail.getText().toString();
                 String pw = edtNewPassword.getText().toString();
                 String username = edtUser.getText().toString();
+                //Olika felmeddelanden baserat på vad felet är.
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pw) || TextUtils.isEmpty(username)) {
                     Toast.makeText(RegActivity.this, "Kom ihåg att fylla alla fält", Toast.LENGTH_SHORT).show();
                 } else if (pw.length() < 6) {
@@ -105,16 +106,13 @@ public class RegActivity extends AppCompatActivity {
                     edtUser.setBackgroundResource(roundedeterror);
                 } else {
                     writeNewUser(email, pw, favCategory);
-
                 }
             }
         });
     }
-
+    //Metoden för att skapa nya kontot
     public void writeNewUser(String email, String pw, String cat) {
-
         String userName = edtUser.getText().toString();
-
         userName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
         String finalUserName = userName;
         users.orderByChild("userName").equalTo(userName).addValueEventListener(new ValueEventListener() {
@@ -133,7 +131,6 @@ public class RegActivity extends AppCompatActivity {
                                 openMain();
                                 finish();
 
-
                             } else {
                                 edtNewEmail.setBackgroundResource(roundedeterror);
                                 Toast.makeText(RegActivity.this, "Konto registrering misslyckad", Toast.LENGTH_SHORT).show();
@@ -150,19 +147,17 @@ public class RegActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
-
             }
         });
 
     }
-
 
     //Gå till main view
     public void openMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
+    //Kollar om användarnamnet redan finns
     private boolean usernameExists(String username) {
         DatabaseReference fdbRefer = FirebaseDatabase.getInstance().getReference("Users/" + username);
         return (fdbRefer != null);
