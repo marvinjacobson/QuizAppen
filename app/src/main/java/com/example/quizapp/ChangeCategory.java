@@ -39,7 +39,9 @@ public class ChangeCategory extends AppCompatActivity {
                 //Hämtar alla kategorier och visar dom i vår spinner (Dropdown menu)
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     String spinnerName = childSnapshot.child("Name").getValue(String.class);
-                    catNames.add(spinnerName);
+                    if(!spinnerName.equals("Dagens Quiz")){
+                        catNames.add(spinnerName);
+                    }
                 }
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ChangeCategory.this, android.R.layout.simple_spinner_item, catNames);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);

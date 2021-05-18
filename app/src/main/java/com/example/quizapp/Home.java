@@ -7,9 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.quizapp.Common.Common;
+
 public class Home extends AppCompatActivity {
 
-    private Button btnSettings, btn_createQuiz, btnCategories, btnFriends, btn_fave;
+    private Button btnSettings, btn_createQuiz, btnCategories, btnFriends, btn_fave, btn_day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class Home extends AppCompatActivity {
         btn_createQuiz = (Button) findViewById(R.id.btn_createQuiz);
         btnCategories = (Button) findViewById(R.id.btn_categories);
         btn_fave = (Button) findViewById(R.id.btn_fave);
+        btn_day = (Button)findViewById(R.id.btn_quizOfDay);
 
         //Öppnar Settings
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +60,20 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        btn_day.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPlay();
+                Common.categoryId = "07";
+            }
+        });
 
+
+    }
+
+    public void openPlay() {
+        Intent intent = new Intent(this, Start.class);
+        startActivity(intent);
     }
 
     public void openSettings() {
