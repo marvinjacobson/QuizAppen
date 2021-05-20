@@ -1,5 +1,6 @@
 package com.example.quizapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -53,7 +54,26 @@ public class ChangeCategory extends AppCompatActivity {
                         String uId = FirebaseAuth.getInstance().getUid();
                         System.out.println(uId);
                         String newFavCat = newCategory.getSelectedItem().toString();
+                        if(newFavCat.equals("Sport")){
+                            newFavCat = "01";
+                        }
+                        else if(newFavCat.equals("Historia")){
+                            newFavCat = "02";
+                        }
+                        else if(newFavCat.equals("Geografi")) {
+                            newFavCat = "03";
+                        }
+                        else if(newFavCat.equals("Musik")) {
+                            newFavCat = "04";
+                        }
+                        else if(newFavCat.equals("Film och TV-serier")) {
+                            newFavCat = "05";
+                        }
+                        else {
+                            newFavCat = "06";
+                        }
                         categories.child("Users").child(uId).child("favCategory").setValue(newFavCat);
+                        openHome();
                     }
                 });
             }
@@ -63,5 +83,10 @@ public class ChangeCategory extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void openHome() {
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
     }
 }

@@ -92,6 +92,24 @@ public class RegActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String favCategory = category.getSelectedItem().toString();
+                if(favCategory.equals("Sport")){
+                    favCategory = "01";
+                }
+                else if(favCategory.equals("Historia")){
+                    favCategory = "02";
+                }
+                else if(favCategory.equals("Geografi")) {
+                    favCategory = "03";
+                }
+                else if(favCategory.equals("Musik")) {
+                    favCategory = "04";
+                }
+                else if(favCategory.equals("Film och TV-serier")) {
+                    favCategory = "05";
+                }
+                else {
+                    favCategory = "06";
+                }
                 System.out.println(favCategory);
                 String email = edtNewEmail.getText().toString();
                 String pw = edtNewPassword.getText().toString();

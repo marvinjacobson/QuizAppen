@@ -24,8 +24,8 @@ public class Home extends AppCompatActivity {
     DatabaseReference mDatabase;
 
     private Button btnSettings, btn_createQuiz, btnCategories, btnFriends, btn_fave, btn_day;
-
     private String favCat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,8 @@ public class Home extends AppCompatActivity {
         btn_fave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPlayQuiz();
+                openPlay();
+                Common.categoryId = favCat;
             }
         });
 
@@ -93,11 +94,12 @@ public class Home extends AppCompatActivity {
         String currentUser = FirebaseAuth.getInstance().getUid();
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser).child("favCategory");
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-               favCat = snapshot.getValue(String.class);
+              String cat = snapshot.getValue(String.class);
+              favCat = cat;
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
